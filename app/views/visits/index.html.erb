@@ -1,0 +1,34 @@
+<h1>Listing visits</h1>
+
+<table>
+  <tr>
+    <th>Rating</th>
+    <th>Dish</th>
+    <th>Restaurant</th>
+    <th>User</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @visits.each do |visit| %>
+  <tr>
+    <td><% visit.rating.times do %>
+        *
+        <% end %>
+    </td>
+    <td><%= visit.dish.name %></td>
+    <td><%= visit.restaurant.name %></td>
+    <td><%= visit.user.name %></td>
+    <td><%= visit.comment %></td>
+    <td><%= link_to 'Show', visit %></td>
+    <td><%= link_to 'Edit', edit_visit_path(visit) %></td>
+    <td><%= link_to 'Destroy', visit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Visit', new_visit_path %>
